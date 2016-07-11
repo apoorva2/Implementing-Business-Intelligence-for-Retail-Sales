@@ -1,0 +1,879 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/6/2015 1:32:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="APPS"
+  DTS:CreatorName="APPS\apoorva"
+  DTS:DTSID="{BBF0FB6A-77D2-4A00-9F12-35C8DFE72985}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.700.219"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Store_To_Staging"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{1271B8BE-B2B4-409E-AD7F-A8AAE8A270D9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Apps.EDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E1CC1754-269D-46B9-8DFE-648923086E3C}"
+      DTS:ObjectName="Apps.EDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FF_StoreSales]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="This is a flat files connection for source files"
+      DTS:DTSID="{D11ADED7-0E85-4AB6-84F5-A533328653FB}"
+      DTS:ObjectName="FF_StoreSales">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Source\StoreSales.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesOrderID"
+              DTS:DTSID="{9004A1D9-CE5B-4192-85E0-273BAE144631}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesOrderDetailID"
+              DTS:DTSID="{7F99B767-A1FE-40BB-B626-779EA86FE55F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductID"
+              DTS:DTSID="{92FE12FB-E73D-49B6-B8FB-A00E19B304DC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UnitPrice"
+              DTS:DTSID="{4844799A-777C-481A-BCBC-78233E34B3FC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OrderQty"
+              DTS:DTSID="{BECFA6E3-8969-418F-9838-4A3086E78DF2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesAmount"
+              DTS:DTSID="{D5938E6D-E867-429B-A45E-F67F05796553}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ModifiedDate"
+              DTS:DTSID="{EEE36BE2-EF32-4149-AA29-97A80D91DC61}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerID"
+              DTS:DTSID="{916B755A-B780-4F44-82DD-277DE0031600}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="City"
+              DTS:DTSID="{C3178A7C-4CA4-4D79-BD57-E579EB7EC044}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StateProvince"
+              DTS:DTSID="{C2B84B4C-4F66-4E9C-9B0C-2432F96378AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CountryName"
+              DTS:DTSID="{0482A428-A4D0-436F-908B-D14D04C07670}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQ - Load StoreSales"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{EC27CD95-645A-43D3-B2AB-60C46BA13937}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ - Load StoreSales">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{DBE7F33F-72EF-4D1B-A6C0-09FCCCF2A987}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT - Load StoreSales"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Destination - Staging StoreSales"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[StoreSales]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Apps.EDW]"
+                      connectionManagerRefId="Package.ConnectionManagers[Apps.EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[SalesOrderID]"
+                          cachedDataType="ui4"
+                          cachedName="SalesOrderID"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[SalesOrderID]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[SalesOrderID]" />
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[SalesOrderDetailID]"
+                          cachedDataType="ui4"
+                          cachedName="SalesOrderDetailID"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[SalesOrderDetailID]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[SalesOrderDetailID]" />
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
+                          cachedDataType="r4"
+                          cachedName="UnitPrice"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[UnitPrice]" />
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[OrderQty]"
+                          cachedDataType="ui1"
+                          cachedName="OrderQty"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[OrderQty]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[OrderQty]" />
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[SalesAmount]"
+                          cachedDataType="r4"
+                          cachedName="SalesAmount"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[SalesAmount]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[SalesAmount]" />
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="date"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[City]"
+                          cachedDataType="wstr"
+                          cachedLength="30"
+                          cachedName="City"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[City]" />
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[StateProvince]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="StateProvince"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[StateProvince]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvince]" />
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[CountryName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="CountryName"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]" />
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedDataType="ui4"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[ProductID]" />
+                        <inputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                          cachedDataType="ui4"
+                          cachedName="CustomerID"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[SalesOrderID]"
+                          dataType="i4"
+                          name="SalesOrderID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[SalesOrderDetailID]"
+                          dataType="i4"
+                          name="SalesOrderDetailID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                          dataType="cy"
+                          name="UnitPrice" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[OrderQty]"
+                          dataType="i2"
+                          name="OrderQty" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[SalesAmount]"
+                          dataType="numeric"
+                          name="SalesAmount"
+                          precision="38"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          dataType="wstr"
+                          length="30"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[StateProvince]"
+                          dataType="wstr"
+                          length="50"
+                          name="StateProvince" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                          dataType="wstr"
+                          length="50"
+                          name="CountryName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          dataType="i4"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[Staging_CreatedDate]"
+                          dataType="dbTimeStamp"
+                          name="Staging_CreatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input].ExternalColumns[Staging_CreatedBy]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Staging_CreatedBy" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[FF_StoreSales]"
+                      connectionManagerRefId="Package.ConnectionManagers[FF_StoreSales]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[SalesOrderID]"
+                          dataType="ui4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[SalesOrderID]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[SalesOrderID]"
+                          name="SalesOrderID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[SalesOrderDetailID]"
+                          dataType="ui4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[SalesOrderDetailID]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[SalesOrderDetailID]"
+                          name="SalesOrderDetailID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[UnitPrice]"
+                          dataType="r4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[UnitPrice]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[UnitPrice]"
+                          name="UnitPrice"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[OrderQty]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OrderQty]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[OrderQty]"
+                          name="OrderQty"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[SalesAmount]"
+                          dataType="r4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[SalesAmount]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[SalesAmount]"
+                          name="SalesAmount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[ModifiedDate]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                          length="30"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                          name="City"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvince]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StateProvince]"
+                          length="50"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvince]"
+                          name="StateProvince"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CountryName]"
+                          length="50"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]"
+                          name="CountryName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[ProductID]"
+                          dataType="ui4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ProductID]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerID]"
+                          dataType="ui4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CustomerID]"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerID]"
+                          name="CustomerID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[SalesOrderID]"
+                          dataType="ui4"
+                          name="SalesOrderID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[SalesOrderDetailID]"
+                          dataType="ui4"
+                          name="SalesOrderDetailID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[UnitPrice]"
+                          dataType="r4"
+                          name="UnitPrice" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OrderQty]"
+                          dataType="ui1"
+                          name="OrderQty" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[SalesAmount]"
+                          dataType="r4"
+                          name="SalesAmount" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="date"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                          dataType="wstr"
+                          length="30"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StateProvince]"
+                          dataType="wstr"
+                          length="50"
+                          name="StateProvince" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CountryName]"
+                          dataType="wstr"
+                          length="50"
+                          name="CountryName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ProductID]"
+                          dataType="ui4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CustomerID]"
+                          dataType="ui4"
+                          name="CustomerID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQ - Load StoreSales\DFT - Load StoreSales.Paths[Flat File Source Output]"
+                  endId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales.Inputs[OLE DB Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Load StoreSales\SQL - Truncate StoreSales"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3B8E1141-5E17-450F-87FB-649512286090}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Truncate StoreSales"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016 CTP3.0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E1CC1754-269D-46B9-8DFE-648923086E3C}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging.StoreSales" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ - Load StoreSales.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{24FD3711-AA31-4D2B-B28E-02323B9BC3FB}"
+          DTS:From="Package\SEQ - Load StoreSales\SQL - Truncate StoreSales"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ - Load StoreSales\DFT - Load StoreSales" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="184,42"
+          Id="Package\SEQ - Load StoreSales\DFT - Load StoreSales"
+          TopLeft="14.5,107.5" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\SEQ - Load StoreSales\SQL - Truncate StoreSales"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\SEQ - Load StoreSales.PrecedenceConstraints[Constraint]"
+          TopLeft="106.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="213,205"
+          Size="213,248"
+          Id="Package\SEQ - Load StoreSales"
+          TopLeft="277.5,70.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SEQ - Load StoreSales\DFT - Load StoreSales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Flat File Source"
+          TopLeft="361,34" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales"
+          TopLeft="325,120" />
+        <EdgeLayout
+          Id="Package\SEQ - Load StoreSales\DFT - Load StoreSales.Paths[Flat File Source Output]"
+          TopLeft="438.25,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ - Load StoreSales\DFT - Load StoreSales\Destination - Staging StoreSales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

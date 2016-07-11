@@ -1,0 +1,369 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/6/2015 7:38:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="APPS"
+  DTS:CreatorName="APPS\apoorva"
+  DTS:DTSID="{8173F6D7-9049-4597-B062-7E1B2679FBA6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.700.219"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW-Load-Facts_Dimensions"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{EBC054C3-FCD2-4857-BEFB-0135EF62B881}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Apps.EDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{87FD027A-799B-4D02-A5B5-657972C0354F}"
+      DTS:ObjectName="Apps.EDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQ - Refresh Dimensions"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{73F204E7-753D-4FD9-9610-74ADBA25DC82}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ - Refresh Dimensions">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Refresh Dimensions\SQL - Load DimCountry"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{BA11C8DA-41A9-4E98-9A1E-13A8167DD51F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Load DimCountry"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016 CTP3.0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{87FD027A-799B-4D02-A5B5-657972C0354F}"
+              SQLTask:SqlStatementSource="EXEC sp_LoadDimCountry" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Refresh Dimensions\SQL - Load DimCustomer"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{466FBDB0-BF86-486A-BE16-F941690FB5EF}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Load DimCustomer"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016 CTP3.0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{87FD027A-799B-4D02-A5B5-657972C0354F}"
+              SQLTask:SqlStatementSource="EXEC sp_LoadDimCustomer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Refresh Dimensions\SQL - Load DimLocation"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8BBF73EC-29D9-4C19-9EA4-EA8F56DA30C0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Load DimLocation"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016 CTP3.0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{87FD027A-799B-4D02-A5B5-657972C0354F}"
+              SQLTask:SqlStatementSource="EXEC sp_LoadDimLocation" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Refresh Dimensions\SQL - Load DimProduct"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2CFAD8BE-7041-4FF6-BFEB-2CA74911D90A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Load DimProduct"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016 CTP3.0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{87FD027A-799B-4D02-A5B5-657972C0354F}"
+              SQLTask:SqlStatementSource="EXEC sp_LoadDimProduct" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ - Refresh Dimensions.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{5CA866CD-E0DD-4C01-9B48-EA146D5CE4E1}"
+          DTS:From="Package\SEQ - Refresh Dimensions\SQL - Load DimCountry"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ - Refresh Dimensions\SQL - Load DimLocation" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ - Refresh Dimensions.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{C2EBE8A2-B79A-4698-A947-CE25AD8BE8B9}"
+          DTS:From="Package\SEQ - Refresh Dimensions\SQL - Load DimLocation"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ - Refresh Dimensions\SQL - Load DimProduct" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ - Refresh Dimensions.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{FB39E1AB-FB1D-4E62-A6C1-083434AA6D36}"
+          DTS:From="Package\SEQ - Refresh Dimensions\SQL - Load DimProduct"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQ - Refresh Dimensions\SQL - Load DimCustomer" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ - Refresh Facts"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{F29706BB-3F4B-48EC-8A01-9B9942021523}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ - Refresh Facts">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Refresh Facts\SQL - Load FactOnlineSales"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{C9787FB9-A81F-4DB9-80ED-67F8932214DE}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Load FactOnlineSales"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016 CTP3.0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{87FD027A-799B-4D02-A5B5-657972C0354F}"
+              SQLTask:SqlStatementSource="EXEC sp_LoadFactOnlineSales" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Refresh Facts\SQL - Load FactStoreSales"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9DB861AD-59B5-457A-914C-8356B1F72305}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Load FactStoreSales"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016 CTP3.0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{87FD027A-799B-4D02-A5B5-657972C0354F}"
+              SQLTask:SqlStatementSource="EXEC sp_LoadFactStoreSales" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ - Refresh Facts.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{7450B0B3-2ED6-476D-A5D6-ACF8F1EC7235}"
+          DTS:From="Package\SEQ - Refresh Facts\SQL - Load FactOnlineSales"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ - Refresh Facts\SQL - Load FactStoreSales" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{12528356-7C65-4135-A014-110E47C4054F}"
+      DTS:From="Package\SEQ - Refresh Dimensions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQ - Refresh Facts" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="190,42"
+          Id="Package\SEQ - Refresh Dimensions\SQL - Load DimCountry"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\SEQ - Refresh Dimensions\SQL - Load DimCustomer"
+          TopLeft="758.5,5.49999999999989" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\SEQ - Refresh Dimensions\SQL - Load DimLocation"
+          TopLeft="256.5,5.5" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\SEQ - Refresh Dimensions\SQL - Load DimProduct"
+          TopLeft="509,5.49999999999989" />
+        <EdgeLayout
+          Id="Package\SEQ - Refresh Dimensions.PrecedenceConstraints[Constraint]"
+          TopLeft="195.5,26.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61.0000000000001,0"
+              Start="0,0"
+              End="53.5000000000001,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.5000000000001,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ - Refresh Dimensions.PrecedenceConstraints[Constraint 1]"
+          TopLeft="448.5,26.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.4999999999999,0"
+              Start="0,0"
+              End="52.9999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="52.9999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ - Refresh Dimensions.PrecedenceConstraints[Constraint 2]"
+          TopLeft="698,26.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.5,0"
+              Start="0,0"
+              End="53,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="962,117"
+          Size="962,160"
+          Id="Package\SEQ - Refresh Dimensions"
+          TopLeft="5.49999999999989,5.5" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\SEQ - Refresh Facts\SQL - Load FactOnlineSales"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\SEQ - Refresh Facts\SQL - Load FactStoreSales"
+          TopLeft="274,5.5" />
+        <EdgeLayout
+          Id="Package\SEQ - Refresh Facts.PrecedenceConstraints[Constraint]"
+          TopLeft="213.5,26.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.5,0"
+              Start="0,0"
+              End="53,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="482,102"
+          Size="482,145"
+          Id="Package\SEQ - Refresh Facts"
+          TopLeft="241.5,259.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="484.5,165.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,93.9999999999999"
+              Start="0,0"
+              End="0,86.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
